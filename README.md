@@ -8,9 +8,13 @@ npm install airtable
 npm install cloudinary
 npm install dotenv
 
-In .env, it is required to put your AirTable Base ID and AirTable API Key.
+Creat a .env file as it is required to put your AirTable Base ID and AirTable API Key.
+
+AIRTABLE_BASE_ID=
+AIRTABLE_API_KEY=
+
 Both of which can be found by going to your account on AirTable and looking at the API section.
 
-It is also required to put your Cloudinary URL in .env, which you can find on your Cloudinary dashboard.
+It is also required to put your Cloudinary details in basic.js, which can all be found on your Cloudinary dashboard.
 
 Finally, use "node basic.js" to run program.
