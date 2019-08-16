@@ -4,9 +4,9 @@ var dotenv = require('dotenv');
 dotenv.load();
 
 cloudinary.config({
-  cloud_name: 'jbrindisi',
-  api_key: '248492961274869',
-  api_secret: 'PSxW5XxfLFATdWyVC_mu18Q8Z8g'
+  cloud_name: '',
+  api_key: '',
+  api_secret: ''
 });
 
 const base = new Airtable({
@@ -15,7 +15,9 @@ const base = new Airtable({
 const table = base('Images');
 const view = 'Grid view';
 
-cloudinary.uploader.upload('pizza.jpg', { tags: 'basic_sample' }, function (err, image) {
+var imageName = '';
+
+cloudinary.uploader.upload(imageName, { tags: 'basic_sample' }, function (err, image) {
   var url = image.url;
 
   const picture = [
@@ -25,10 +27,8 @@ cloudinary.uploader.upload('pizza.jpg', { tags: 'basic_sample' }, function (err,
   ];
 
   table.create({
-    "columns": 'C1',
-    "text": 'image1',
-    "pictures": picture,
-    "links": url
+    "ATTACHMENTS_COLUMN": picture,
+    "URLS_COLUMN": url
   }, function(err, record) {
     if (err) { console.error(err); return; }
   });
