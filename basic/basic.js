@@ -9,13 +9,14 @@ cloudinary.config({
   api_secret: ''
 });
 
+var imageName = '';
+var tableName = '';
+
 const base = new Airtable({
   apiKey: process.env.AIRTABLE_API_KEY,
 }).base(process.env.AIRTABLE_BASE_ID);
-const table = base('Images');
+const table = base(tableName);
 const view = 'Grid view';
-
-var imageName = '';
 
 cloudinary.uploader.upload(imageName, { tags: 'basic_sample' }, function (err, image) {
   var url = image.url;
